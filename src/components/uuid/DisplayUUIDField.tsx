@@ -1,32 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { writeClipboard } from '../../functionals/clipboard';
-import { HiClipboardCopy } from 'react-icons/hi';
+import { HiClipboardCheck, HiClipboardCopy } from 'react-icons/hi';
+import { Button, Snackbar } from '@mui/material';
 
 type GenerateUUIDButtonProps = {
   uuid: string;
 };
 
 export const DisplayUUIDField = (props: GenerateUUIDButtonProps) => {
+  const [copyIcon, setCopyIcon] = useState<'finish' | 'copy' | ''>('');
+  const [showSnackBar, setShowSnackBar] = useState(false);
+
+  const getIcon = () => {
+    switch (copyIcon) {
+      case 'copy':
+        return <HiClipboardCopy />;
+      case 'finish':
+        return <HiClipboardCheck />;
+      default:
+        return undefined;
+    }
+  };
+
+  useEffect(() => {
+    if (!props.uuid) {
+      setCopyIcon('');
+      return;
+    }
+    setCopyIcon('copy');
+  }, [props.uuid]);
+
+  useEffect(() => {
+    return setShowSnackBar(copyIcon === 'finish');
+  }, [copyIcon]);
+
   return (
     <div
-      style={{
-        width: '300px',
-        border: '1px solid #ddd',
-        display: 'flex',
-        flexDirection: 'row',
-        cursor: 'pointer',
-      }}
-      onFocus={() => {
-        writeClipboard(props.uuid);
+      tabIndex={0}
+      onBlur={() => {
+        setCopyIcon('copy');
       }}
     >
-      <input
-        type="text"
-        readOnly
-        value={props.uuid}
-        style={{ border: 'none', outline: 'none', flex: 1, textAlign: 'center', cursor: 'pointer' }}
+      <Button
+        endIcon={getIcon()}
+        onClick={() => {
+          writeClipboard(props.uuid).then(() => setCopyIcon('finish'));
+        }}
+      >
+        {props.uuid}
+      </Button>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        open={showSnackBar}
+        autoHideDuration={1000}
+        message="UUIDをクリップボードにコピーしました"
       />
-      <HiClipboardCopy style={{ padding: '10px' }} />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { GenerateUUIDButton } from './components/uuid/GenerateUUIDButton';
 import { DisplayUUIDField } from './components/uuid/DisplayUUIDField';
+import { AppBar, Card, CardActions, CardContent, Typography, Container, Box } from '@mui/material';
 
 export const App = () => {
   const [uuid, setUuid] = React.useState<string>('');
@@ -11,10 +12,21 @@ export const App = () => {
   };
 
   return (
-    <div className="App">
-      UUID v4 のUUIDを生成します
-      <GenerateUUIDButton onHandleGenerateUUID={onHandleGenerateUUID} />
-      <DisplayUUIDField uuid={uuid} />
-    </div>
+    <Container style={{ margin: 10 }}>
+      <AppBar position="static" style={{ padding: 10 }}>
+        <Typography variant="h6" color="inherit" component="div">
+          UUID生成
+        </Typography>
+      </AppBar>
+      <Card variant="outlined">
+        <CardContent style={{ textAlign: 'center' }}>UUID v4 のUUIDを生成します</CardContent>
+        <CardActions style={{ justifyContent: 'center' }}>
+          <GenerateUUIDButton onHandleGenerateUUID={onHandleGenerateUUID} />
+        </CardActions>
+        <CardActions style={{ justifyContent: 'center' }}>
+          <DisplayUUIDField uuid={uuid} />
+        </CardActions>
+      </Card>
+    </Container>
   );
 };
