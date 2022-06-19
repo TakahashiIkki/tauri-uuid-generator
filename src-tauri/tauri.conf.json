@@ -29,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "ikki.takahashi.uuid-gen",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -56,7 +56,7 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 250,
         "resizable": true,
         "title": "uuid-gen",
         "width": 800
