@@ -6,6 +6,7 @@
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.8.4",
+    "@tauri-apps/api": "^1.0.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -26,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "tauri": "tauri"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@tauri-apps/cli": "^1.0.0",
     "@types/uuid": "^8.3.4",
     "prettier": "2.7.1"
   }

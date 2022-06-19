@@ -2,7 +2,7 @@ import React from 'react';
 
 import { GenerateUUIDButton } from './components/uuid/GenerateUUIDButton';
 import { DisplayUUIDField } from './components/uuid/DisplayUUIDField';
-import { AppBar, Card, CardActions, CardContent, Typography, Container, Box } from '@mui/material';
+import { AppBar, Card, CardActions, CardContent, Typography, Container } from '@mui/material';
 
 export const App = () => {
   const [uuid, setUuid] = React.useState<string>('');
