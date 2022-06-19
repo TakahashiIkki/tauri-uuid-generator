@@ -8,15 +8,25 @@ type GenerateUUIDButtonProps = {
 
 export const DisplayUUIDField = (props: GenerateUUIDButtonProps) => {
   return (
-    <div>
-      <input type="text" readOnly value={props.uuid} size={36} />
-      <button
-        onClick={() => {
-          writeClipboard(props.uuid);
-        }}
-      >
-        <HiClipboardCopy />
-      </button>
+    <div
+      style={{
+        width: '300px',
+        border: '1px solid #ddd',
+        display: 'flex',
+        flexDirection: 'row',
+        cursor: 'pointer',
+      }}
+      onFocus={() => {
+        writeClipboard(props.uuid);
+      }}
+    >
+      <input
+        type="text"
+        readOnly
+        value={props.uuid}
+        style={{ border: 'none', outline: 'none', flex: 1, textAlign: 'center', cursor: 'pointer' }}
+      />
+      <HiClipboardCopy style={{ padding: '10px' }} />
     </div>
   );
 };
