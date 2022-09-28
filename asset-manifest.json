@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/tauri-uuid-generator/static/js/main.c5d8bbbb.js",
+    "main.js": "/tauri-uuid-generator/static/js/main.b49dc0e0.js",
     "index.html": "/tauri-uuid-generator/index.html",
-    "main.c5d8bbbb.js.map": "/tauri-uuid-generator/static/js/main.c5d8bbbb.js.map"
+    "main.b49dc0e0.js.map": "/tauri-uuid-generator/static/js/main.b49dc0e0.js.map"
   },
   "entrypoints": [
-    "static/js/main.c5d8bbbb.js"
+    "static/js/main.b49dc0e0.js"
   ]
 }
