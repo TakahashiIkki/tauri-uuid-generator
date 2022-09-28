@@ -15,7 +15,7 @@ import {
 
 export const App = () => {
   const [uuids, setUuids] = React.useState<string[]>([]);
-  const [uuidCount, setUuidCount] = React.useState<number>(3);
+  const [uuidCount, setUuidCount] = React.useState<number>(1);
 
   const onHandleGenerateUUID = (data: string[]) => {
     setUuids(data);
