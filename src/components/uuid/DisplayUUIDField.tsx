@@ -4,7 +4,7 @@ import { HiClipboardCheck, HiClipboardCopy } from 'react-icons/hi';
 import { Button, Snackbar } from '@mui/material';
 
 type GenerateUUIDButtonProps = {
-  uuid: string;
+  uuids: string[];
 };
 
 export const DisplayUUIDField = (props: GenerateUUIDButtonProps) => {
@@ -23,12 +23,12 @@ export const DisplayUUIDField = (props: GenerateUUIDButtonProps) => {
   };
 
   useEffect(() => {
-    if (!props.uuid) {
+    if (!props.uuids.length) {
       setCopyIcon('');
       return;
     }
     setCopyIcon('copy');
-  }, [props.uuid]);
+  }, [props.uuids]);
 
   useEffect(() => {
     return setShowSnackBar(copyIcon === 'finish');
@@ -44,10 +44,11 @@ export const DisplayUUIDField = (props: GenerateUUIDButtonProps) => {
       <Button
         endIcon={getIcon()}
         onClick={() => {
-          writeClipboard(props.uuid).then(() => setCopyIcon('finish'));
+          writeClipboard(props.uuids.join('\n')).then(() => setCopyIcon('finish'));
         }}
+        style={{ whiteSpace: 'pre-line' }}
       >
-        {props.uuid}
+        {props.uuids.join('\n')}
       </Button>
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}

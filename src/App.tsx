@@ -5,10 +5,11 @@ import { DisplayUUIDField } from './components/uuid/DisplayUUIDField';
 import { AppBar, Container, CardActions, CardContent, Typography, Box } from '@mui/material';
 
 export const App = () => {
-  const [uuid, setUuid] = React.useState<string>('');
+  const [uuids, setUuids] = React.useState<string[]>([]);
+  const [uuidCount, setUuidCount] = React.useState<number>(3);
 
-  const onHandleGenerateUUID = (data: string) => {
-    setUuid(data);
+  const onHandleGenerateUUID = (data: string[]) => {
+    setUuids(data);
   };
 
   return (
@@ -21,10 +22,10 @@ export const App = () => {
       <Container>
         <CardContent style={{ textAlign: 'center' }}>UUID v4 のUUIDを生成します</CardContent>
         <CardActions style={{ justifyContent: 'center' }}>
-          <GenerateUUIDButton onHandleGenerateUUID={onHandleGenerateUUID} />
+          <GenerateUUIDButton uuidCount={uuidCount} onHandleGenerateUUID={onHandleGenerateUUID} />
         </CardActions>
         <CardActions style={{ justifyContent: 'center' }}>
-          <DisplayUUIDField uuid={uuid} />
+          <DisplayUUIDField uuids={uuids} />
         </CardActions>
       </Container>
     </Box>
